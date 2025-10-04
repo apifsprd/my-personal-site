@@ -170,7 +170,7 @@ function App() {
           ))}
         </div>
       </div>
-      <footer className="flex justify-center items-center p-4 bg-sky-100">
+      <footer className="flex justify-center items-center p-4 bg-gray-100">
         <span className="text-xs font-inter font-normal text-slate-600">
           Made with ❤️ by Apif Supriadi
         </span>
