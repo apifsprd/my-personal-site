@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "PT. Prima Rajuli Sukses Job Portal & Recruitment Test",
+    "description": "PT. Prima Rajuli Sukses adalah perusahaan textile di Tangerang, Indonesia. saat berkesempatan bekerja disana saya membuat Job Portal bagi grup Evershine yang dilengkapi psikotes online",
+    "image": "http://evershinetex.biz/logo-estprima.png",
+    "link": "http://evershinetex.biz/home",
+    "stack": ["React, ExpressJS, PostgreSQL"]
+  },
+  {
+    "id": 2,
+    "name": " TripleAiYou (Android & Ios)",
+    "description": "TripleAiYou adalah aplikasi komprehensif yang dirancang untuk staf, dosen, dan mahasiswa Universitas Islam Internasional Indonesia (UIII). Platform inovatif ini bertujuan untuk meningkatkan pengalaman akademik dengan menyederhanakan komunikasi, kolaborasi, dan pengelolaan berbagai tugas akademik dan administrasi.",
+    "image": "https://tripleaiyou.uiii.ac.id/images/logo.png",
+    "link": "https://tripleaiyou.uiii.ac.id/",
+    "stack": ["React Native"]
+  }
+]
