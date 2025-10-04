@@ -36,17 +36,17 @@ function App() {
 
   return (
     <>
-      <div className="w-full min-h-screen flex flex-col gap-8 px-4 py-4 sm:px-[20vw] lg:px-[25vw] bg-white">
+      <div className="w-full min-h-screen flex flex-col gap-8 px-4 py-4 sm:px-[20vw] lg:px-[30vw] bg-white">
         {/* Job title */}
         <div className="w-full h-auto flex flex-row justify-between items-center">
           <div className="flex flex-row justify-start items-center gap-2">
             <span className="w-1.5 h-1.5 bg-gray-500 rounded-full" />
-            <span className="font-inter font-normal text-black text-xs">
+            <span className="font-inter font-normal text-black text-xs md:text-base">
               Mobile App Dev
             </span>
           </div>
           <div className="flex justify-start items-center px-3 py-1 bg-sky-100 rounded-full">
-            <span className="font-inter font-normal text-sky-500 text-xs">
+            <span className="font-inter font-normal text-sky-500 text-xs  md:text-base">
               Currently Employed
             </span>
           </div>
@@ -54,16 +54,16 @@ function App() {
         {/* Header */}
         <div className="w-full h-auto flex flex-col-reverse justify-center items-center gap-4 md:flex-row">
           <div className="w-full flex flex-col gap-4 justify-center items-center md:justify-start md:items-start">
-            <span className="font-inter font-semibold text-black text-xl">
+            <span className="font-inter font-semibold text-black text-xl lg:text-2xl">
               I'm Apif Supriadi
             </span>
-            <span className="font-inter font-normal text-black text-base text-center md:text-left">
+            <span className="font-inter font-normal text-black text-base text-center md:text-left lg:text-lg">
               <span className="bg-sky-100">Mobile App Developer</span> from
               Depok, Indonesia and currently employed at{" "}
               <a
                 href="https://uiii.ac.id"
                 target="_blank"
-                className="font-inter bg-yellow-100 text-yellow-600 text-base hover:underline hover:underline-offset-2"
+                className="font-inter bg-yellow-100 text-yellow-600 text-base hover:underline hover:underline-offset-2 lg:text-lg"
               >
                 Universitas Islam Internasional Indonesia (UIII)
               </a>
@@ -87,43 +87,22 @@ function App() {
             <img
               src="/images/profile/1x1-colored.png"
               alt="Apif Supriadi"
-              className="w-32 h-32 rounded-full object-cover "
+              className="w-32 h-32 rounded-full object-cover lg:w-44 lg:h-44"
             />
           </div>
         </div>
-        {/* Tabs */}
-        {/* <div className="flex flex-row justify-center items-center gap-2">
-          <button
-            onClick={() => {}}
-            className="px-3 py-2 flex flex-row justify-start items-center gap-2 bg-sky-100 rounded-lg"
-          >
-            <span className="w-1.5 h-1.5 bg-sky-600 rounded-full" />
-            <span className="font-inter font-semibold text-sky-600 text-sm">
-              Post
-            </span>
-          </button>
-          <button
-            onClick={() => {}}
-            className="px-3 py-2 flex flex-row justify-start items-center gap-2 bg-gray-100 rounded-lg"
-          >
-            <span className="hidden w-1.5 h-1.5 bg-gray-600 rounded-full" />
-            <span className="font-inter font-semibold text-gray-600 text-sm">
-              Project
-            </span>
-          </button>
-        </div> */}
-        {/* Post */}
-        <div className="flex flex-col gap-2 bg-sky-50 p-4 rounded-xl">
-          <span className="font-inter font-normal text-black text-sm mb-2">
+
+        <div className="flex flex-col gap-4 bg-sky-50 p-4 rounded-xl">
+          <span className="font-inter font-normal text-black text-sm mb-2 md:text-base">
             Post
           </span>
           {posts.map((post, index) => (
             <div
               key={index}
-              className="flex flex-col-reverse justify-start items-start gap-2 bg-white rounded-lg p-2 hover:shadow sm:flex-row"
+              className="flex flex-col-reverse justify-between items-start gap-2 bg-white rounded-lg p-2 hover:ring-4 hover:ring-sky-200 md:flex-row cursor-pointer lg:p-4"
             >
               <div className="flex flex-col gap-1">
-                <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row justify-start items-center gap-2">
                   <span className="text-xs font-inter font-normal text-slate-400 lg:text-sm">
                     {moment(post.date).format("ll")}
                   </span>
@@ -131,14 +110,14 @@ function App() {
                     {"#" + post.category}
                   </span>
                 </div>
-                <span className="text-sm font-inter font-semibold text-black lg:text-base">
+                <span className="text-sm font-inter font-semibold text-black lg:text-lg">
                   {post.title}
                 </span>
               </div>
               <img
                 src={post.image}
-                alt="Apif Supriadi"
-                className="w-full h-24 md:w-[45vw] md:h-[12vh] lg:h-[10vh] xl:w-[30vw] rounded-lg object-cover"
+                alt="post"
+                className="w-full h-32 md:w-32 lg:w-44 lg:h-32 rounded-lg object-cover"
               />
             </div>
           ))}
@@ -151,18 +130,18 @@ function App() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="flex flex-col justify-start items-start gap-2 bg-white rounded-lg p-2 hover:shadow md:flex-row"
+              className="flex flex-col justify-start items-start gap-2 bg-white rounded-lg p-2 hover:ring-4 hover:ring-sky-200 md:flex-row cursor-pointer"
             >
               <img
                 src={project.image}
                 alt="Apif Supriadi"
-                className="w-14 h-14 rounded-lg object-cover"
+                className="w-14 h-14 lg:w-24 lg:h-24 rounded-lg object-cover"
               />
               <div className="flex flex-col gap-1">
-                <span className="text-sm font-inter font-semibold text-black lg:text-sm">
+                <span className="text-sm font-inter font-semibold text-black lg:text-lg">
                   {project.name}
                 </span>
-                <span className="text-xs font-inter font-normal text-slate-600 lg:text-base">
+                <span className="text-xs font-inter font-normal text-slate-600 lg:text-sm">
                   {project.stack[0]}
                 </span>
               </div>
@@ -170,8 +149,8 @@ function App() {
           ))}
         </div>
       </div>
-      <footer className="flex justify-center items-center p-4 bg-gray-100">
-        <span className="text-xs font-inter font-normal text-slate-600">
+      <footer className="flex justify-center items-center p-4 mt-14 bg-sky-600">
+        <span className="text-xs font-inter font-normal text-white lg:text-sm">
           Made with ❤️ by Apif Supriadi
         </span>
       </footer>
