@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
-import { Calendar, Clock, ArrowLeft, User, MoveLeft } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, User, MoveLeft, Tag } from "lucide-react";
 import moment from "moment";
 import "moment/locale/id";
 import Layout from "../Layout";
@@ -24,8 +24,6 @@ export default function Post() {
       // Ekstrak slug dari path
       const fileSlug = path.replace("../content/post/", "").replace(".mdx", "");
 
-      console.log("Checking:", fileSlug, "against slug:", slug);
-
       // Jika slug cocok
       if (fileSlug === slug) {
         foundPost = {
@@ -37,10 +35,8 @@ export default function Post() {
     }
 
     if (foundPost) {
-      console.log("Post found:", foundPost);
       setPost(foundPost);
     } else {
-      console.log("Post not found for slug:", slug);
       setPost(null);
     }
 
@@ -107,14 +103,6 @@ export default function Post() {
   return (
     <Layout>
       <article className="max-w-3xl mx-auto">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8"
-        >
-          <MoveLeft size={20} />
-          <p className="text-sm">Kembali</p>
-        </Link>
-
         {/* Header Post */}
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-playfair font-bold text-gray-900 mb-4">
@@ -123,23 +111,16 @@ export default function Post() {
 
           <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
             <div className="flex items-center gap-2">
-              <User size={18} />
-              <p className="text-sm">Apif Supriadi</p>
+              <User size={22} />
+              <p className="text-base">Apif Supriadi</p>
             </div>
 
             {frontmatter.pubDate && (
               <div className="flex items-center gap-2">
-                <Calendar size={18} />
-                <p className="text-sm">
+                <Calendar size={22} />
+                <p className="text-base">
                   {moment(frontmatter.pubDate).format("ll")}
                 </p>
-              </div>
-            )}
-
-            {frontmatter.readingTime && (
-              <div className="flex items-center gap-2">
-                <Clock size={18} />
-                {frontmatter.readingTime}
               </div>
             )}
           </div>
@@ -184,10 +165,10 @@ export default function Post() {
 
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mt-8"
+          className="inline-flex items-center gap-2 text-slate-600 mt-8 px-3 py-2 rounded-full bg-slate-100 hover:bg-slate-200 hover:text-slate-800"
         >
           <MoveLeft size={20} />
-          <p className="text-sm">Kembali</p>
+          <p className="text-base">Baca artikel lainnya</p>
         </Link>
       </article>
     </Layout>
