@@ -57,7 +57,7 @@ function App() {
             </a>
           </span>
           <div className="flex flex-row justify-start items-center gap-2">
-            <p className="font-inter font-normal text-black text-sm">
+            <p className="font-inter font-normal text-black text-sm text-center lg:text-left">
               Saya senang menulis tentang : {interest[0].id.join(", ")}
             </p>
           </div>
