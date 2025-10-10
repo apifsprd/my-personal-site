@@ -1,6 +1,7 @@
+import { Languages } from "lucide-react";
 import React from "react";
 
-function Layout({ children }) {
+function Layout({ lang, onSetLang, children }) {
   return (
     <>
       <div className="w-full min-h-screen flex flex-col gap-8 px-4 py-4 sm:px-[20vw] lg:px-[30vw] bg-white">
@@ -9,10 +10,21 @@ function Layout({ children }) {
             <span className="w-1.5 h-1.5 bg-sky-600 rounded-full" />
             <a
               href="/"
-              className="font-inter font-semibold text-black text-xs md:text-base lg:text-lg hover:bg-yellow-100"
+              className="font-inter font-semibold text-black text-sm md:text-base lg:text-lg hover:bg-yellow-100 transition ease-linear duration-300"
             >
               @apifsprd
             </a>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => onSetLang(lang === "id" ? "en" : "id")}
+              className="w-16 p-2 flex gap-1 justify-center items-center rounded-full bg-slate-100 hover:bg-slate-200 cursor-pointer"
+            >
+              <Languages size={18} />
+              <span className="font-inter font-semibold text-sm uppercase">
+                {lang}
+              </span>
+            </button>
           </div>
         </div>
         {children}

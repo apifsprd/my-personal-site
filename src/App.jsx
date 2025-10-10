@@ -2,25 +2,33 @@ import { Instagram, Linkedin } from "lucide-react";
 import "./App.css";
 import { Link } from "react-router";
 import projects from "./api/projects.json";
-import interest from "./api/interest.json";
+import quote from "./api/qoute.json";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Layout from "./Layout";
 
 const modules = import.meta.glob("./content/post/*.mdx", { eager: true });
+const modules_en = import.meta.glob("./content/post_en/*.mdx", {
+  eager: true,
+});
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [lang, setLang] = useState(localStorage.getItem("lang") || "id");
 
   useEffect(() => {
     const loadedPosts = [];
-    for (const path in modules) {
-      const module = modules[path];
+    let selectedModules = lang === "id" ? modules : modules_en;
+    for (const path in selectedModules) {
+      const module = selectedModules[path];
       const frontmatter = module.frontmatter || {};
-      const slug = path.replace("./content/post/", "").replace(".mdx", "");
+      const slug_id = path.replace("./content/post/", "").replace(".mdx", "");
+      const slug_en = path
+        .replace("./content/post_en/", "")
+        .replace(".mdx", "");
 
       loadedPosts.push({
-        slug: slug,
+        slug: lang === "id" ? slug_id : slug_en,
         title: frontmatter.title || "Judul Tanpa Frontmatter",
         date: frontmatter.pubDate || "Tanggal Tidak Diketahui",
         category: frontmatter.category,
@@ -33,21 +41,24 @@ function App() {
     const sorted = loadedPosts.sort(
       (a, b) => new Date(b.date) - new Date(a.date)
     );
-
+    localStorage.setItem("lang", lang);
     setPosts(sorted);
-  }, []);
+  }, [lang]);
 
   return (
-    <Layout>
+    <Layout lang={lang} onSetLang={setLang}>
       {/* Header */}
       <div className="w-full h-auto flex flex-col-reverse justify-center items-center gap-4 md:flex-row">
         <div className="w-full flex flex-col gap-4 justify-center items-center md:justify-start md:items-start">
           <span className="font-inter font-semibold text-black text-xl lg:text-2xl">
-            Halo! Saya Apif Supriadi,
+            {lang === "id"
+              ? "Halo! Saya Apif Supriadi,"
+              : "Hi! I'm Apif Supriadi,"}
           </span>
           <span className="font-inter font-normal text-black text-base text-center md:text-left lg:text-lg">
-            Seorang Frontend Developer yang tinggal di Depok, Jawa Barat, saat
-            ini saya bekerja di{" "}
+            {lang === "id"
+              ? "Seorang Frontend Developer yang tinggal di Depok, Jawa Barat, saat ini saya bekerja di"
+              : "Frontend Developer based in Depok, Indonesia, currently working at"}{" "}
             <a
               href="https://uiii.ac.id"
               target="_blank"
@@ -57,8 +68,9 @@ function App() {
             </a>
           </span>
           <div className="flex flex-row justify-start items-center gap-2">
-            <p className="font-inter font-normal text-black text-sm text-center lg:text-left">
-              Saya senang menulis tentang : {interest[0].id.join(", ")}
+            <p className="font-inter font-normal text-black text-sm text-center italic lg:text-left">
+              {lang === "id" ? quote.quoute_id : quote.qoute_en} <br />{" "}
+              <span className="not-italic">- {quote.author}</span>
             </p>
           </div>
           <div className="flex flex-row justify-center items-center gap-2">
@@ -80,14 +92,14 @@ function App() {
           <img
             src="/images/profile/1x1-colored.png"
             alt="Apif Supriadi"
-            className="w-32 h-32 rounded-full object-cover lg:w-44 lg:h-44"
+            className="w-32 h-32 rounded-full object-cover lg:w-44 lg:h-44 "
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-4 bg-slate-100 p-4 rounded-xl">
         <span className="font-inter font-semibold text-black text-sm mb-2 md:text-base">
-          Artikel
+          {lang === "id" ? "Artikel Terbaru" : "Latest Post"}
         </span>
         {posts.map((post, index) => (
           <Link
@@ -98,7 +110,7 @@ function App() {
             <div className="flex flex-col gap-1">
               <div className="flex flex-row justify-start items-center gap-2">
                 <span className="text-xs font-inter font-normal text-slate-500 lg:text-sm">
-                  {moment(post.date).format("ll")}
+                  {moment(new Date(post.date)).format("ll")}
                 </span>
                 <span className="text-xs font-inter font-normal text-slate-500 lg:text-sm">
                   {"#" + post.category_id}
@@ -119,7 +131,7 @@ function App() {
       {/* Project */}
       <div className="flex flex-col gap-4 bg-slate-100 p-4 rounded-xl">
         <span className="font-inter font-semibold text-black text-base mb-2">
-          Proyek
+          {lang === "id" ? "Proyek Terbaru" : "Latest Project"}
         </span>
         {projects.map((project, index) => (
           <a
@@ -137,8 +149,8 @@ function App() {
               <span className="text-sm font-inter font-semibold text-black lg:text-lg">
                 {project.name}
               </span>
-              <span className="text-xs font-inter font-normal text-black line-clamp-2 lg:text-base">
-                {project.description}
+              <span className="text-xs font-inter font-normal text-black lg:text-base">
+                {lang === "id" ? project.description : project.description_en}
               </span>
               <span className="text-xs font-inter font-normal text-slate-600 lg:text-sm">
                 <span className="text-sky-600"> {project.stack[0]}</span>

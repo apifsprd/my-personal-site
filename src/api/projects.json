@@ -1,18 +1,20 @@
 [
   {
-    "id": 1,
-    "name": "PT. Prima Rajuli Sukses Job Portal & Recruitment Test",
-    "description": "PT. Prima Rajuli Sukses adalah perusahaan textile di Tangerang, Indonesia. saat berkesempatan bekerja disana saya membuat Job Portal bagi grup Evershine yang dilengkapi psikotes online",
-    "image": "https://careercenter.uph.edu/member/employer/logo?s=1709226000.3781&f=667f4ba7c5ba7def31db9150d3ffd335.jpeg",
-    "link": "http://evershinetex.biz/home",
-    "stack": ["React, ExpressJS, PostgreSQL"]
-  },
-  {
     "id": 2,
     "name": " TripleAiYou (Android & Ios)",
     "description": "TripleAiYou adalah aplikasi komprehensif yang dirancang untuk staf, dosen, dan mahasiswa Universitas Islam Internasional Indonesia (UIII). Platform inovatif ini bertujuan untuk meningkatkan pengalaman akademik dengan menyederhanakan komunikasi, kolaborasi, dan pengelolaan berbagai tugas akademik dan administrasi.",
+    "description_en": "TripleAiYou is a comprehensive application designed for staff, lecturers, and students of the International Islamic University of Indonesia (UIII). This innovative platform aims to enhance the academic experience by simplifying communication, collaboration, and management of various academic and administrative tasks.",
     "image": "https://tripleaiyou.uiii.ac.id/images/logo.png",
     "link": "https://tripleaiyou.uiii.ac.id/",
     "stack": ["React Native"]
+  },
+  {
+    "id": 1,
+    "name": "PT. Prima Rajuli Sukses Job Portal & Recruitment Test",
+    "description": "PT. Prima Rajuli Sukses adalah perusahaan textile di Tangerang, Indonesia. saat berkesempatan bekerja disana saya membuat Job Portal bagi grup Evershine yang dilengkapi psikotes online",
+    "description_en": "PT. Prima Rajuli Sukses is a textile company in Tangerang, Indonesia. While working there, I created a Job Portal for the Evershine group, equipped with online psychological tests.",
+    "image": "https://careercenter.uph.edu/member/employer/logo?s=1709226000.3781&f=667f4ba7c5ba7def31db9150d3ffd335.jpeg",
+    "link": "http://evershinetex.biz/home",
+    "stack": ["React, ExpressJS, PostgreSQL"]
   }
 ]
