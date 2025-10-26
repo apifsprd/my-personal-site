@@ -12,6 +12,25 @@ const modules_en = import.meta.glob("./content/post_en/*.mdx", {
   eager: true,
 });
 
+const headerContent = {
+  id: {
+    title: "Halo! Saya Apif Supriadi,",
+    description:
+      "Saya seorang Frontend Developer yang tinggal di Depok, Jawa Barat, saat ini saya bekerja di",
+    bio: "Diluar pekerjaan, saya sangat tertarik dengan sepakbola, bagi saya mengembangkan sebuah aplikasi dan sepakbola punya kaitan yang erat yaitu kerjasama",
+  },
+  en: {
+    title: "Hi! I'm Apif Supriadi,",
+    description:
+      "I'm a Frontend Developer based in Depok, Indonesia, currently working at",
+    bio: "Outside of work, I'm really into football. To me, software development and football are pretty similar - they're both all about teamwork",
+  },
+  currentWork: {
+    company: "Universitas Islam Internasional Indonesia (UIII)",
+    link: "https://uiii.ac.id/",
+  },
+};
+
 function App() {
   const [posts, setPosts] = useState([]);
   const [lang, setLang] = useState(localStorage.getItem("lang") || "id");
@@ -51,38 +70,35 @@ function App() {
       <div className="w-full h-auto flex flex-col-reverse justify-center items-center gap-4 md:flex-row">
         <div className="w-full flex flex-col gap-4 justify-center items-center md:justify-start md:items-start">
           <span className="font-inter font-semibold text-black text-xl lg:text-2xl">
-            {lang === "id"
-              ? "Halo! Saya Apif Supriadi,"
-              : "Hi! I'm Apif Supriadi,"}
+            {lang === "id" ? headerContent.id.title : headerContent.en.title}
           </span>
           <span className="font-inter font-normal text-black text-base text-center md:text-left lg:text-lg">
             {lang === "id"
-              ? "Seorang Frontend Developer yang tinggal di Depok, Jawa Barat, saat ini saya bekerja di"
-              : "Frontend Developer based in Depok, Indonesia, currently working at"}{" "}
+              ? headerContent.id.description
+              : headerContent.en.description}{" "}
             <a
-              href="https://uiii.ac.id"
+              href={headerContent.currentWork.link}
               target="_blank"
               className="font-inter bg-yellow-100 text-yellow-600 text-base hover:underline hover:underline-offset-2 lg:text-lg"
             >
-              Universitas Islam Internasional Indonesia (UIII)
+              {headerContent.currentWork.company}
             </a>
           </span>
           <div className="flex flex-row justify-start items-center gap-2">
-            <p className="font-inter font-normal text-black text-sm text-center italic lg:text-left">
-              {lang === "id" ? quote.quoute_id : quote.qoute_en} <br />{" "}
-              <span className="not-italic">- {quote.author}</span>
+            <p className="font-inter font-normal text-black text-base text-center lg:text-left">
+              {lang === "id" ? headerContent.id.bio : headerContent.en.bio}
             </p>
           </div>
           <div className="flex flex-row justify-center items-center gap-2">
             <a
               href="https://linkedin.com/in/apifsprd"
-              className="w-10 h-10 flex justify-center items-center rounded-full bg-sky-100 hover:bg-sky-50"
+              className="w-10 h-10 flex justify-center items-center rounded-full bg-slate-100 hover:bg-slate-50"
             >
               <Linkedin size={18} color="#0284C7" />
             </a>
             <a
               href="https://instagram.com/apifsprd"
-              className="w-10 h-10 flex justify-center items-center rounded-full bg-sky-100 hover:bg-sky-50"
+              className="w-10 h-10 flex justify-center items-center rounded-full bg-slate-100 hover:bg-slate-50"
             >
               <Instagram size={18} color="#0284C7" />
             </a>
@@ -90,9 +106,9 @@ function App() {
         </div>
         <div className="w-full flex justify-center items-center">
           <img
-            src="/images/profile/1x1-colored.png"
+            src="/images/profile/1x1.png"
             alt="Apif Supriadi"
-            className="w-32 h-32 rounded-full object-cover lg:w-44 lg:h-44 "
+            className="w-32 h-32 rounded-full object-cover lg:w-48 lg:h-48 "
           />
         </div>
       </div>
@@ -108,23 +124,23 @@ function App() {
             className="flex flex-col-reverse justify-between items-start gap-4 bg-white rounded-lg p-2 hover:ring-4 hover:ring-sky-200 md:flex-row cursor-pointer lg:p-4"
           >
             <div className="flex flex-col gap-1">
+              <span className="text-base font-inter font-semibold text-black lg:text-lg">
+                {post.title}
+              </span>
               <div className="flex flex-row justify-start items-center gap-2">
-                <span className="text-xs font-inter font-normal text-slate-500 lg:text-sm">
+                <span className="text-sm font-inter font-normal text-slate-500 lg:text-sm">
                   {moment(new Date(post.date)).format("ll")}
                 </span>
-                <span className="text-xs font-inter font-normal text-slate-500 lg:text-sm">
+                <span className="text-sm font-inter font-normal text-slate-500 lg:text-sm">
                   {"#" + post.category_id}
                 </span>
               </div>
-              <span className="text-sm font-inter font-semibold text-black lg:text-lg">
-                {post.title}
-              </span>
             </div>
-            <img
+            {/* <img
               src={post.image}
               alt="post"
               className="w-full h-32 md:w-32 lg:w-44 lg:h-32 rounded-lg object-cover"
-            />
+            /> */}
           </Link>
         ))}
       </div>
