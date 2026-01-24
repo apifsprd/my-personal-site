@@ -1,4 +1,4 @@
-import { ArrowUpRight, Instagram, Linkedin } from "lucide-react";
+import { ArrowUpRight, Github, Instagram, Linkedin } from "lucide-react";
 import "./App.css";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
@@ -56,7 +56,7 @@ function App() {
     }
 
     const sorted = loadedPosts.sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
+      (a, b) => new Date(b.date) - new Date(a.date),
     );
     localStorage.setItem("lang", lang);
     setPosts(sorted);
@@ -65,7 +65,7 @@ function App() {
   return (
     <Layout lang={lang} onSetLang={setLang}>
       {/* Header */}
-      <section className="w-full h-auto flex flex-col justify-start items-start gap-4 md:flex-col">
+      {/* <section className="w-full h-auto flex flex-col justify-start items-start gap-4 md:flex-col">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900">
             {lang === "id"
@@ -123,14 +123,55 @@ function App() {
                 </span>
               </div>
             </div>
-            {/* <img
-              src={post.image}
-              alt="post"
-              className="w-full h-32 md:w-32 lg:w-44 lg:h-32 rounded-lg object-cover"
-            /> */}
           </Link>
         ))}
-      </div>
+      </div> */}
+
+      {/* Header */}
+      <section className="w-full h-[400px] my-16 flex flex-row gap-4 justify-between items-center">
+        <view className="w-[40%] flex justify-center">
+          <img
+            src="/images/profile/1x1.png"
+            alt=""
+            className="w-64 h-64 object-cover rounded-lg"
+          />
+        </view>
+        <view className="w-[50%] flex flex-col gap-4">
+          <p className="text-base font-normal text-slate-900">
+            Halo! <span className="text-2xl">👋</span>
+          </p>
+          <h1 className="text-4xl font-bold text-slate-900">
+            Saya Apif Supriadi,
+          </h1>
+          <h2 className="text-2xl font-semibold text-slate-900 leading-relaxed">
+            Saya seorang Frontend Web dan Mobile App Developer yang menyukai
+            sepakbola
+          </h2>
+          <view className="flex flex-row justify-start items-center gap-4 mt-4">
+            <a
+              href="#"
+              className="py-2 px-4 rounded-full bg-sky-200 flex flex-row items-center gap-2"
+            >
+              <Github size={24} />
+              <p className="text-sm font-normal text-slate-900">Github</p>
+            </a>
+            <a
+              href="#"
+              className="py-2 px-4 rounded-full bg-sky-200 flex flex-row items-center gap-2"
+            >
+              <Github size={24} />
+              <p className="text-sm font-normal text-slate-900">Github</p>
+            </a>
+            <a
+              href="#"
+              className="py-2 px-4 rounded-full bg-sky-200 flex flex-row items-center gap-2"
+            >
+              <Github size={24} />
+              <p className="text-sm font-normal text-slate-900">Github</p>
+            </a>
+          </view>
+        </view>
+      </section>
     </Layout>
   );
 }
