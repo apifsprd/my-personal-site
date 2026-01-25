@@ -30,6 +30,14 @@ function Layout({ lang, onSetLang, children }) {
                   href="#"
                   className="font-semibold text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
+                  {lang === "id" ? "Tentang" : "About"}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="font-semibold text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
+                >
                   {lang === "id" ? "Kemampuan" : "Skill"}
                 </a>
               </li>
