@@ -1,33 +1,12 @@
 import { ArrowUpRight, Github, Instagram, Linkedin } from "lucide-react";
 import "./App.css";
-import { Link } from "react-router";
 import { useEffect, useState } from "react";
-import moment from "moment";
 import Layout from "./Layout";
 
 const modules = import.meta.glob("./content/post/*.mdx", { eager: true });
 const modules_en = import.meta.glob("./content/post_en/*.mdx", {
   eager: true,
 });
-
-const headerContent = {
-  id: {
-    title: "Halo! Saya Apif Supriadi,",
-    description:
-      "Saya seorang Frontend Developer yang tinggal di Depok, Jawa Barat, saat ini saya bekerja di",
-    bio: "Diluar pekerjaan, saya sangat tertarik dengan sepakbola, bagi saya mengembangkan sebuah aplikasi dan sepakbola punya kaitan yang erat yaitu kerjasama",
-  },
-  en: {
-    title: "Hi! I'm Apif Supriadi,",
-    description:
-      "I'm a Frontend Developer based in Depok, Indonesia, currently working at",
-    bio: "Outside of work, I'm really into football. To me, software development and football are pretty similar - they're both all about teamwork",
-  },
-  currentWork: {
-    company: "Universitas Islam Internasional Indonesia (UIII)",
-    link: "https://uiii.ac.id/",
-  },
-};
 
 const SOCIAL_LINKS = [
   {
@@ -161,9 +140,12 @@ function App() {
 
   return (
     <Layout lang={lang} onSetLang={setLang}>
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
         {/* Header - Responsive */}
-        <section className="w-full min-h-[300px] sm:min-h-[400px] my-8 sm:my-16 flex flex-col md:flex-row gap-6 md:gap-4 justify-between items-center">
+        <section
+          id="home"
+          className="w-full min-h-[400px] sm:min-h-[500px] my-8 sm:my-16 flex flex-col md:flex-row gap-6 md:gap-4 justify-between items-center scroll-mt-24"
+        >
           <div className="w-full md:w-[40%] flex justify-center order-1 md:order-1">
             <img
               src="/images/profile/1x1.png"
@@ -201,9 +183,12 @@ function App() {
         </section>
 
         {/* About - Responsive */}
-        <section className="w-full min-h-[300px] sm:min-h-[400px] my-8 flex flex-col md:flex-row gap-6 md:gap-4 justify-between items-start">
+        <section
+          id="about"
+          className="w-full min-h-[300px] sm:min-h-[400px] my-8 flex flex-col md:flex-row gap-6 md:gap-4 justify-between items-start scroll-mt-24"
+        >
           <div className="w-full md:w-[50%] flex flex-col gap-3 sm:gap-4 order-2 md:order-1">
-            <p className="text-base font-normal text-slate-900">About</p>
+            <p className="text-base font-normal text-slate-900">Tentang</p>
             <h5 className="text-lg sm:text-xl font-semibold text-slate-900">
               Saya berpengalaman 2+ tahun dalam pengembangan web dan mobile app
               berbasis Javascript
@@ -228,7 +213,10 @@ function App() {
         </section>
 
         {/* Skills - Responsive */}
-        <section className="w-full min-h-[300px] sm:min-h-[400px] my-8 flex flex-col gap-4 sm:gap-6 justify-start items-start">
+        <section
+          id="skills"
+          className="w-full min-h-[400px] sm:min-h-[500px] my-8 flex flex-col gap-4 sm:gap-6 justify-start items-start scroll-mt-24"
+        >
           <div className="w-full flex flex-col gap-3 sm:gap-4">
             <h5 className="text-lg sm:text-xl font-semibold text-slate-900">
               Kemampuan Teknis
@@ -272,7 +260,10 @@ function App() {
         </section>
 
         {/* Projects - Responsive */}
-        <section className="w-full min-h-[300px] sm:min-h-[400px] my-8 flex flex-col gap-4 sm:gap-6 justify-start items-start">
+        <section
+          id="projects"
+          className="w-full min-h-[400px] sm:min-h-[500px] my-8 flex flex-col gap-4 sm:gap-6 justify-start items-start scroll-mt-24"
+        >
           <div className="w-full flex flex-col gap-3 sm:gap-4">
             <h5 className="text-lg sm:text-xl font-semibold text-slate-900">
               Proyek
@@ -330,7 +321,10 @@ function App() {
         </section>
 
         {/* Blog - Responsive */}
-        <section className="flex flex-col gap-4 bg-slate-100 p-3 sm:p-4 rounded-xl">
+        <section
+          id="blog"
+          className="flex flex-col gap-4 rounded-xl scroll-mt-24"
+        >
           <span className="font-semibold text-black text-sm sm:text-base mb-2">
             Blog
           </span>
@@ -338,7 +332,7 @@ function App() {
             <a
               href={`/post/${post.slug}`}
               key={index}
-              className="flex flex-col gap-3 sm:flex-row justify-between items-start sm:gap-4 bg-white rounded-lg p-3 sm:p-4 transition ease-in duration-300 hover:bg-sky-100 hover:-translate-y-1 cursor-pointer"
+              className="flex flex-col gap-3 sm:flex-row justify-between items-start sm:gap-4 bg-white border border-gray-200 rounded-lg p-3 sm:p-4 transition ease-in duration-300 hover:bg-sky-100 hover:-translate-y-1 cursor-pointer"
             >
               <div className="flex flex-col gap-1 sm:gap-2">
                 <span className="text-base sm:text-lg font-semibold text-black">
@@ -359,6 +353,29 @@ function App() {
               </div>
             </a>
           ))}
+        </section>
+
+        <section
+          id="contact"
+          className="w-full h-auto my-8 flex flex-col gap-4 sm:gap-6 justify-start items-start scroll-mt-24"
+        >
+          <div className="bg-sky-100 rounded-xl w-full h-auto p-8 flex flex-col gap-4 justify-start items-start">
+            <h1 className="text-lg sm:text-xl font-semibold text-slate-900">
+              Saya siap berkolaborasi!
+            </h1>
+            <p className="text-sm sm:text-base font-normal text-slate-900">
+              Saya sedang membuka kesempatan untuk proyek baru. Mari diskusikan
+              bagaimana saya dapat membatu visi Anda menjadi kenyataan melalui
+              solusi teknologi yang tepat.
+            </p>
+            <a
+              href="mailto:apifsupriadi27@gmail.com"
+              target="_blank"
+              className="px-4 py-4 bg-sky-600 text-white rounded-xl hover:bg-sky-500 transition ease-in duration-300"
+            >
+              Hubungi via Email
+            </a>
+          </div>
         </section>
       </div>
     </Layout>

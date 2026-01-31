@@ -23,7 +23,7 @@ function Layout({ lang, onSetLang, children }) {
             <ul className="flex flex-row justify-start items-center gap-6">
               <li>
                 <a
-                  href="#"
+                  href="#home"
                   className="font-semibold text-sm xl:text-base text-sky-500 hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
                   {lang === "id" ? "Beranda" : "Home"}
@@ -31,7 +31,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#about"
                   className="font-semibold text-sm xl:text-base text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
                   {lang === "id" ? "Tentang" : "About"}
@@ -39,7 +39,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#skills"
                   className="font-semibold text-sm xl:text-base text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
                   {lang === "id" ? "Kemampuan" : "Skill"}
@@ -47,7 +47,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#projects"
                   className="font-semibold text-sm xl:text-base text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
                   {lang === "id" ? "Proyek" : "Project"}
@@ -55,7 +55,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#blog"
                   className="font-semibold text-sm xl:text-base text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
                   Blog
@@ -63,7 +63,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact"
                   className="font-semibold text-sm xl:text-base text-black hover:text-sky-500 transition-all duration-300 cursor-pointer"
                 >
                   {lang === "id" ? "Kontak" : "Contact"}
@@ -129,7 +129,7 @@ function Layout({ lang, onSetLang, children }) {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
-                  href="#"
+                  href="#home"
                   className="block py-2 px-4 font-semibold text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-300"
                 >
                   {lang === "id" ? "Beranda" : "Home"}
@@ -137,7 +137,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#about"
                   className="block py-2 px-4 font-semibold text-black hover:text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-300"
                 >
                   {lang === "id" ? "Tentang" : "About"}
@@ -145,7 +145,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#skills"
                   className="block py-2 px-4 font-semibold text-black hover:text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-300"
                 >
                   {lang === "id" ? "Kemampuan" : "Skill"}
@@ -153,7 +153,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#projects"
                   className="block py-2 px-4 font-semibold text-black hover:text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-300"
                 >
                   {lang === "id" ? "Proyek" : "Project"}
@@ -161,7 +161,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#blog"
                   className="block py-2 px-4 font-semibold text-black hover:text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-300"
                 >
                   Blog
@@ -169,7 +169,7 @@ function Layout({ lang, onSetLang, children }) {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact"
                   className="block py-2 px-4 font-semibold text-black hover:text-sky-500 hover:bg-sky-50 rounded-lg transition-all duration-300"
                 >
                   {lang === "id" ? "Kontak" : "Contact"}
@@ -182,7 +182,7 @@ function Layout({ lang, onSetLang, children }) {
         {children}
       </main>
 
-      <footer className="flex justify-center items-center p-4 mt-14 bg-sky-200">
+      <footer className="flex justify-center items-center p-4 mt-14 bg-gray-100">
         <span className="text-xs font-inter font-normal text-slate-900 sm:text-sm lg:text-base">
           &copy; {new Date().getFullYear()} Apif Supriadi
         </span>
