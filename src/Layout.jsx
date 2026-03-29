@@ -1,72 +1,110 @@
 import { Languages } from "lucide-react";
 import React, { useState } from "react";
 
-function Layout({ lang, onSetLang, children }) {
+function Layout({ lang = "en", onSetLang, children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const MENUS = [
-    { name: "Profil", name_en: "Profile", link: "#profile" },
-    { name: "Kemampuan", name_en: "Skill", link: "#skills" },
-    { name: "Karya", name_en: "Projects", link: "#projects" },
+    { name: "Beranda", name_en: "Home", link: "" },
     { name: "Blog", name_en: "Blog", link: "#blog" },
-    { name: "Hubungi Saya", name_en: "Contact", link: "#contact" },
+    { name: "Karya", name_en: "Projects", link: "#project" },
+    // { name: "Hubungi Saya", name_en: "Contact", link: "#contact" },
   ];
 
   return (
     <>
-      <div className="min-h-screen flex flex-col">
-        {/* Navbar */}
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-4xl z-50">
-          <div className="bg-white/70 border border-slate-100 rounded-full px-6 py-3 flex items-center justify-between">
-            {/* Logo / Brand */}
-            <span className="font-sans text-lg font-bold bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">
-              @apifsprd
-            </span>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex gap-6 text-sm font-medium">
-              {MENUS.map((item) => (
-                <a
-                  key={item.link}
-                  href={item.link}
-                  className="text-slate-600 hover:text-sky-600 transition-all duration-300 capitalize relative group"
+      <div className="min-h-screen flex flex-col bg-white">
+        <div className="w-full h-2 bg-gradient-to-r from-newsky to-newblue"></div>
+        <div className="flex-grow max-w-5xl mx-auto w-full bg-white ">
+          <header className="flex flex-col gap-4 justify-center h-24">
+            <nav className="flex flex-row justify-between items-center px-4 py-2">
+              <div className="flex flex-row justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <h1 className="text-xl sm:text-2xl font-bold">Apif's Site</h1>
+                </div>
+              </div>
+              <div className="flex flex-row justify-between items-center">
+                {/* Desktop */}
+                <ul className="flex-row gap-8 hidden md:flex">
+                  {MENUS.map((menu) => (
+                    <li key={menu.link}>
+                      <a
+                        href={menu.link}
+                        className="text-md font-medium tracking-wide hover:text-newblue  focus:text-newblue transition duration-300 ease-in-out focus:outline-none"
+                      >
+                        {lang === "id" ? menu.name : menu.name_en}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="md:hidden"
                 >
-                  {item.name}
-                  {/* Efek garis bawah saat hover */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-600 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                  {isMenuOpen ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
+              {/* <button
+                className="flex flex-row justify-center items-center text-sm text-black gap-2 rounded-full border border-gray-200 px-4 py-1 hover:border-newblue  transition duration-300 ease-in-out  cursor-pointer"
+                onClick={() => onSetLang(lang === "id" ? "en" : "id")}
+              >
+                <Languages className="w-4 h-4" />
+                {lang === "id" ? "EN" : "ID"}
+              </button> */}
+            </nav>
+            {/* Mobile */}
+            <ul
+              className={`flex-col gap-4 md:hidden ${isMenuOpen ? "flex" : "hidden"} bg-white p-4 border border-gray-200 rounded-xl shadow-md absolute top-18 right-4 z-50 w-2/3`}
+            >
+              {MENUS.map((menu) => (
+                <li key={menu.link}>
+                  <a
+                    href={menu.link}
+                    className="text-md font-medium tracking-wide hover:text-newblue  focus:text-newblue transition duration-300 ease-in-out focus:outline-none"
+                  >
+                    {lang === "id" ? menu.name : menu.name_en}
+                  </a>
+                </li>
               ))}
-            </div>
-
-            {/* Mobile Menu Icon */}
-            <div className="md:hidden">
-              <button className="p-2 text-slate-700 hover:bg-slate-100 rounded-full transition-colors">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        <main className="flex-grow max-w-5xl mx-auto px-6 pt-24 md:pt-24 w-full">
-          {children}
-        </main>
-
-        {/* Footer */}
-        <footer className="text-center py-4 text-[10px] uppercase tracking-widest opacity-40 border-t border-second/10">
-          Code with &hearts; by Apif Supriadi
-        </footer>
+            </ul>
+          </header>
+          <main>{children}</main>
+          <footer className="flex flex-col gap-4 justify-center items-center h-14 mt-32">
+            <p className="text-center py-4 text-sm text-black">
+              Code with ❤️ by Apif Supriadi from Indonesia
+            </p>
+          </footer>
+        </div>
       </div>
     </>
   );

@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap");
+@import "tailwindcss";
 
 @theme {
   /* Font Family */
@@ -8,17 +7,12 @@
   --font-display: "Playfair Display", serif;
 
   /* Color Palette */
-  --color-base: #f7f8f0;
-  --color-third: #9cd5ff;
-  --color-second: #7aaace;
-  --color-first: #355872;
+  --color-newsky: #9fccfa;
+  --color-newblue: #0974f1;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-white text-black font-sans;
   }
 }

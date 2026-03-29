@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
-import {
-  ArrowRight,
-  ArrowRightToLine,
-  Github,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+import ButtonBase from "./components/ui/Button";
+import { ArrowUpRight, Github, Instagram, Linkedin } from "lucide-react";
+import Button from "./components/ui/Button";
 
 const modules = import.meta.glob("./content/post/*.mdx", { eager: true });
 const modules_en = import.meta.glob("./content/post_en/*.mdx", {
@@ -31,67 +27,6 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const SKILLS = [
-  {
-    name_id: "Bahasa Pemrograman",
-    name_en: "Programming Language",
-    lists: [
-      {
-        name: "Javascript",
-        logo: "/images/logo/js.png",
-      },
-      {
-        name: "Typescript",
-        logo: "/images/logo/ts.png",
-      },
-    ],
-  },
-  {
-    name_id: "Framework",
-    name_en: "Framework",
-    lists: [
-      {
-        name: "React",
-        logo: "/images/logo/react.png",
-      },
-      {
-        name: "React Native",
-        logo: "/images/logo/react.png",
-      },
-      {
-        name: "Tailwind CSS",
-        logo: "/images/logo/tailwindcss.png",
-      },
-      {
-        name: "ExpressJS",
-        logo: "/images/logo/expressjs.png",
-      },
-      {
-        name: "Expo",
-        logo: "/images/logo/expo.png",
-      },
-      {
-        name: "NextJS",
-        logo: "/images/logo/nextjs.png",
-      },
-    ],
-  },
-  {
-    name_id: "Peralatan",
-    name_en: "Tools",
-    lists: [
-      {
-        name: "Git",
-        logo: "/images/logo/git.png",
-      },
-      {
-        name: "Figma",
-        logo: "/images/logo/figma.png",
-      },
-    ],
-  },
-];
-
 const PROJECTS = [
   {
     image: "https://tripleaiyou.uiii.ac.id/images/logo.png",
@@ -111,16 +46,24 @@ const PROJECTS = [
   {
     image:
       "https://coffee-shop-by-apifsprd.vercel.app/_next/image?url=%2Fimages%2Flogo-transparent.png&w=1920&q=75",
-    name: "Coffee Shop App",
-    desc: "Aplikasi pemesanan untuk cafe berbasis web dengan antarmuka modern yang responsif, mengutamakan kecepatan akses dan pengalaman pengguna yang mulus.",
+    name: "Indocafe n resto",
+    desc: "Sebuah web app pemesanan makanan lengkap dengan management user, order, dan menu",
     skills: ["NextJS", "TailwindCSS"],
     link: "https://coffee-shop-by-apifsprd.vercel.app/",
   },
+  {
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUjNFReUs9YHhY6tRaeXDY5GC-QvtRKdO-ZA&s",
+    name: "Konveksipro",
+    desc: "Sebuah web app untuk konveksi dengan management product",
+    skills: ["ReactJS", "TailwindCSS"],
+    link: "https://konveksi-app-phi.vercel.app/",
+  },
 ];
 
-const App = () => {
+function App() {
   const [posts, setPosts] = useState([]);
-  const [lang, setLang] = useState(localStorage.getItem("lang") || "id");
+  const [lang, setLang] = useState(localStorage.getItem("lang") || "en");
 
   useEffect(() => {
     const loadedPosts = [];
@@ -137,8 +80,10 @@ const App = () => {
         slug: lang === "id" ? slug_id : slug_en,
         title: frontmatter.title || "Judul Tanpa Frontmatter",
         date: frontmatter.pubDate || "Tanggal Tidak Diketahui",
+        category: frontmatter.category,
         category_id: frontmatter.category_id,
         image: frontmatter.image,
+        Component: module.default,
       });
     }
 
@@ -151,216 +96,138 @@ const App = () => {
 
   return (
     <Layout>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* About Section */}
-        <section
-          id="about"
-          className="w-full min-h-[90vh] flex flex-col-reverse md:flex-row justify-center items-center text-center md:text-start gap-10 md:gap-16 py-12 md:py-20"
-        >
-          <div className="flex flex-1 flex-col gap-4 items-center md:items-start">
-            <p className="font-sans text-black font-semibold text-xl md:text-3xl">
-              Halo, Saya
-            </p>
-            <h1 className="font-sans text-4xl sm:text-5xl font-bold md:text-6xl mb-2 leading-tight text-black">
-              Apif Supriadi
-            </h1>
-            <p className="max-w-2xl text-base md:text-lg leading-relaxed text-slate-600">
-              Saya seorang{" "}
-              <span className="text-sky-600 font-medium">
-                Software Engineer
-              </span>{" "}
-              yang antusias dalam membangun aplikasi scalable. Memiliki
-              pengalaman 2+ tahun dalam mengembangkan Web atau Mobile berbasis
-              Javascript seperti React, React Native dan Node.js.
-            </p>
-
-            <div className="flex flex-row flex-wrap justify-center md:justify-start items-center gap-3 mt-6">
-              {SOCIAL_LINKS.map((link, index) => (
-                <a
-                  key={index}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={link.link || "#"}
-                  className="py-2 px-4 rounded-full bg-white border border-sky-100 flex flex-row items-center gap-2 hover:border-sky-300  transition-all duration-300"
-                >
-                  <span className="text-sky-600">{link.icon}</span>
-                  <p className="text-xs sm:text-sm font-medium text-slate-700">
-                    {link.name}
-                  </p>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-1 justify-center items-center">
-            <div className="relative">
-              <img
-                src="/images/profile/1x1.png"
-                alt="Profile"
-                className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 object-cover border-4 border-second rounded-full p-4"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Skills Section */}
-        <section id="skills" className="py-16 md:py-24">
-          <div className="mb-12 text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">Keahlian</h2>
-            <div className="h-1.5 w-20 bg-gradient-to-r from-sky-600 to-indigo-600 rounded-full mx-auto md:mx-0"></div>
-            <p className="mt-4 text-slate-600 max-w-xl mx-auto md:mx-0">
-              Daftar teknologi yang saya gunakan untuk membangun solusi digital
-              yang efisien.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SKILLS.map((category, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-2xl bg-white border border-slate-100  hover:border-sky-200 transition-all"
-              >
-                <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 justify-center md:justify-start">
-                  <span className="w-2 h-2 rounded-full bg-sky-600"></span>
-                  {category.name_id}
-                </h3>
-                <div className="flex flex-wrap gap-5 justify-center md:justify-start">
-                  {category.lists.map((skill, skillIndex) => (
-                    <div
-                      key={skillIndex}
-                      className="flex flex-col items-center group"
-                    >
-                      <div className="w-14 h-14 p-3 rounded-xl bg-slate-50 group-hover:bg-sky-50 transition-colors flex items-center justify-center">
-                        <img
-                          src={skill.logo}
-                          alt={skill.name}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <span className="mt-2 text-[10px] font-semibold text-slate-500 uppercase tracking-tight">
-                        {skill.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-16 md:py-24">
-          <div className="mb-12 text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">
-              Proyek Pilihan
+      <section
+        id="hero"
+        className="w-full h-[80vh] sm:h-[90vh] flex flex-col gap-8 justify-center px-4 sm:px-0"
+      >
+        <div className="flex flex-col gap-4 sm:gap-6 w-full">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold">
+            Hi!
+          </h1>
+          <div className="flex flex-row gap-2 sm:gap-4 justify-start items-center overflow-clip flex-wrap">
+            <h2 className="text-3xl  lg:text-5xl font-semibold whitespace-nowrap">
+              I'm
             </h2>
-            <div className="h-1.5 w-20 bg-gradient-to-r from-sky-600 to-indigo-600 rounded-full mx-auto md:mx-0"></div>
+            <img
+              src="/images/profile/1x1.png"
+              alt="apifsprd photo"
+              className="w-20 sm:w-20 lg:w-24 h-20 sm:h-20 lg:h-24 rounded-full border-2 sm:border-4 border-newsky flex-shrink-0"
+            />
+            <h2 className="text-3xl  lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-newsky to-newblue whitespace-nowrap">
+              Apif Supriadi
+            </h2>
+            <div className="h-1 w-4 sm:w-6 lg:w-8 bg-black flex-shrink-0"></div>
+            <h2 className="text-3xl  lg:text-5xl font-semibold whitespace-nowrap">
+              Mobile App Dev
+            </h2>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS.map((project, index) => (
-              <div
-                key={index}
-                className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-slate-100 hover:border-sky-200 transition-all duration-500"
-              >
-                <div className="relative h-52 overflow-hidden bg-slate-50">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    {project.name}
-                  </h3>
-                  <p className="text-slate-600 text-sm line-clamp-3 mb-4 flex-grow">
-                    {project.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.skills.map((s, i) => (
-                      <span
-                        key={i}
-                        className="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 rounded-md"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    className="w-full text-center py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-sky-600 transition-colors"
-                  >
-                    Lihat Proyek
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Blog Section */}
-        <section id="blog" className="py-16 md:py-24">
-          <h2 className="text-3xl font-bold mb-8">Tulisan Terbaru</h2>
-          <div className="space-y-4">
-            {posts.map((post, index) => (
-              <a
-                href={`/post/${post.slug}`}
-                key={index}
-                className="group flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl hover:border-sky-300  transition-all"
-              >
-                <div>
-                  <h3 className="text-lg font-bold group-hover:text-sky-600 transition-colors">
-                    {post.title}
-                  </h3>
-                  <div className="flex items-center gap-3 mt-1 text-sm text-slate-500">
-                    <span>
-                      {new Date(post.date).toLocaleDateString("id-ID", {
-                        dateStyle: "medium",
-                      })}
-                    </span>
-                    <span className="text-sky-500 font-bold text-xs uppercase px-2 py-0.5 bg-sky-50 rounded">
-                      {post.category_id}
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-4 sm:mt-0 text-sky-600 font-semibold flex items-center gap-1 text-sm">
-                  <span className="group-hover:translate-x-1 transition-transform">
-                    <ArrowRight />
+        </div>
+        <div className="flex flex-col max-w-3xl">
+          <p className="text-lg lg:text-xl leading-relaxed text-black font-medium">
+            I'm a Web Developer turned Mobile App Developer. I enjoy work in the
+            Javascript ecosystem. I also love exploring new technologies and
+            learning new things. beside that, I'm a <span>&#9917;</span>{" "}
+            football fan.
+          </p>
+        </div>
+        <div className="flex flex-col w-full sm:w-40">
+          <Button title="Read my blog" size="md" />
+        </div>
+        <div className="flex flex-row gap-4 max-w-3xl">
+          {SOCIAL_LINKS.map((link, index) => (
+            <Button
+              key={index}
+              variant="link"
+              href={link.link}
+              iconLeft={link.icon}
+              title={link.name}
+              size="sm"
+            />
+          ))}
+        </div>
+      </section>
+      <section
+        id="blog"
+        className="w-full h-auto flex flex-col gap-6 sm:gap-8 justify-center my-16 sm:my-32 px-4 sm:px-0 scroll-mt-24"
+      >
+        <h2 className="text-xl sm:text-2xl font-semibold">Latest post</h2>
+        <div className="flex flex-col gap-4">
+          {posts.map((post, index) => (
+            <a
+              href={`/post/${post.slug}`}
+              key={index}
+              className="flex flex-col gap-3 sm:flex-row justify-between items-start sm:gap-4 bg-white border border-gray-200 rounded-lg p-3 sm:p-4 transition ease-in duration-300 hover:border-newblue hover:-translate-y-1 cursor-pointer"
+            >
+              <div className="flex flex-col gap-1 sm:gap-2">
+                <span className="text-base sm:text-base lg:text-lg font-semibold text-black">
+                  {post.title}
+                </span>
+                <div className="flex flex-row justify-start items-center gap-2">
+                  <span className="text-xs sm:text-sm font-normal text-slate-500">
+                    {new Date(post.date).toLocaleDateString("id-ID", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                  <span className="text-xs sm:text-sm font-normal text-slate-500">
+                    {"#" + post.category_id}
                   </span>
                 </div>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-16 md:py-24">
-          <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-16 text-center lg:text-left overflow-hidden relative">
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
-              <div className="max-w-2xl">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                  Ayo buat sesuatu yang{" "}
-                  <span className="text-sky-400">luar biasa.</span>
-                </h2>
-                <p className="text-slate-400 text-lg">
-                  Siap untuk kolaborasi? Hubungi saya untuk diskusi lebih
-                  lanjut.
-                </p>
               </div>
-              <a
-                href="mailto:apifsupriadi27@gmail.com"
-                className="w-full sm:w-auto px-10 py-5 bg-sky-600 text-white font-bold rounded-2xl hover:bg-sky-500 transition-all shadow-lg shadow-sky-900/20"
-              >
-                Email
-              </a>
+            </a>
+          ))}
+        </div>
+      </section>
+      <section
+        id="project"
+        className="w-full h-auto flex flex-col gap-6 sm:gap-8 justify-center my-16 sm:my-32 px-4 sm:px-0 scroll-mt-24"
+      >
+        <h2 className="text-xl sm:text-2xl font-semibold">Latest project</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          {PROJECTS.map((project, index) => (
+            <div
+              key={index}
+              className="flex flex-col gap-3 sm:gap-4 justify-start items-start p-3 sm:p-4 border border-gray-200 rounded-lg hover:scale-105 hover:border-newblue transition duration-300 ease-in-out"
+            >
+              <img
+                src={project.image}
+                alt={project.name}
+                className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 object-cover"
+              />
+              <h3 className="text-base sm:text-base lg:text-lg font-semibold text-slate-900">
+                {project.name}
+              </h3>
+              <p className="text-sm sm:text-base font-normal text-slate-900 leading-relaxed">
+                {project.desc}
+              </p>
+              <div className="flex flex-row flex-wrap gap-2 justify-start items-center">
+                {project.skills.map((tag, index) => (
+                  <div
+                    key={index}
+                    className="px-3 sm:px-4 py-1 flex justify-center items-center bg-gray-100 rounded-full"
+                  >
+                    <p className="text-xs sm:text-sm font-normal text-slate-900">
+                      {tag}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-row flex-wrap justify-end mt-auto w-full">
+                <Button
+                  title="See more"
+                  variant="link"
+                  href={project.link}
+                  size="md"
+                  iconRight={<ArrowUpRight size={16} />}
+                />
+              </div>
             </div>
-          </div>
-        </section>
-      </div>
+          ))}
+        </div>
+      </section>
     </Layout>
   );
-};
+}
 
 export default App;
