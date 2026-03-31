@@ -1,16 +1,87 @@
-# React + Vite
+# Apif Supriadi - Personal Portfolio & Blog 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fast, and responsive personal portfolio and blog built with **React**, **Vite**, and **MDX**. This project features a clean design, multi-language support (ID/EN), and a dynamic blog engine.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [apifsprd.web.id](https://apifsprd.web.id)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🌍 **Multi-language Support**: Seamlessly switch between Indonesian and English.
+- ✍️ **MDX Powered Blog**: Write blog posts using Markdown with the power of React components.
+- 💼 **Job Experience Timeline**: Interactive accordion-style professional journey.
+- 🛠️ **Project Showcase**: Beautifully cards for featured works with live demo indicators.
+- 📱 **Fully Responsive**: Optimized for Mobile, Tablet, and Desktop.
+- ⚡ **Lightning Fast**: Built with Vite for optimal development and production performance.
+- 🎨 **Modern UI**: Styled with Tailwind CSS and Lucide Icons.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- **Framework**: [React.js](https://reactjs.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Content**: [MDX](https://mdxjs.com/) (Markdown for the component era)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: Custom Tailwind Animations & Keyframes
+- **Date Handling**: [Moment.js](https://momentjs.com/)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/apifsprd/my-blog-mdx.git
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd my-blog-mdx
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://github.com/apifsprd/my-blog-mdx/issues).
+
+### Show your support
+
+If you like this project, please consider giving it a **⭐️ Star** or **🍴 Forking** it to build your own awesome portfolio!
+
+---
+
+## 📄 License
+
+Copyright © 2024 [Apif Supriadi](https://github.com/apifsprd).
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+
+---
+
+*Made with ❤️ by [Apif Supriadi](https://github.com/apifsprd)*

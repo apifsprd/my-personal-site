@@ -1,112 +1,108 @@
-import { Languages } from "lucide-react";
+import { Languages, Menu, X } from "lucide-react";
 import React, { useState } from "react";
 
 function Layout({ lang = "en", onSetLang, children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const MENUS = [
-    { name: "Beranda", name_en: "Home", link: "" },
-    { name: "Blog", name_en: "Blog", link: "#blog" },
-    { name: "Karya", name_en: "Projects", link: "#project" },
-    // { name: "Hubungi Saya", name_en: "Contact", link: "#contact" },
+    { name: "Beranda", name_en: "Home", link: "/" },
+    { name: "Pengalaman", name_en: "Experience", link: "/#experience" },
+    { name: "Blog", name_en: "Blog", link: "/#blog" },
+    { name: "Karya", name_en: "Projects", link: "/#project" },
   ];
 
+  const currentLang = lang || localStorage.getItem("lang") || "en";
+
   return (
-    <>
-      <div className="min-h-screen flex flex-col bg-white">
-        <div className="w-full h-2 bg-gradient-to-r from-newsky to-newblue"></div>
-        <div className="flex-grow max-w-5xl mx-auto w-full bg-white ">
-          <header className="flex flex-col gap-4 justify-center h-24">
-            <nav className="flex flex-row justify-between items-center px-4 py-2">
-              <div className="flex flex-row justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <h1 className="text-xl sm:text-2xl font-bold">Apif's Site</h1>
-                </div>
-              </div>
-              <div className="flex flex-row justify-between items-center">
-                {/* Desktop */}
-                <ul className="flex-row gap-8 hidden md:flex">
-                  {MENUS.map((menu) => (
-                    <li key={menu.link}>
-                      <a
-                        href={menu.link}
-                        className="text-md font-medium tracking-wide hover:text-newblue  focus:text-newblue transition duration-300 ease-in-out focus:outline-none"
-                      >
-                        {lang === "id" ? menu.name : menu.name_en}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden"
-                >
-                  {isMenuOpen ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-                      />
-                    </svg>
-                  )}
-                </button>
-              </div>
-              {/* <button
-                className="flex flex-row justify-center items-center text-sm text-black gap-2 rounded-full border border-gray-200 px-4 py-1 hover:border-newblue  transition duration-300 ease-in-out  cursor-pointer"
-                onClick={() => onSetLang(lang === "id" ? "en" : "id")}
-              >
-                <Languages className="w-4 h-4" />
-                {lang === "id" ? "EN" : "ID"}
-              </button> */}
-            </nav>
-            {/* Mobile */}
-            <ul
-              className={`flex-col gap-4 md:hidden ${isMenuOpen ? "flex" : "hidden"} bg-white p-4 border border-gray-200 rounded-xl shadow-md absolute top-18 right-4 z-50 w-2/3`}
-            >
+    <div className="min-h-screen flex flex-col bg-white font-sans">
+      <div className="w-full h-2 bg-gradient-to-r from-newsky to-newblue"></div>
+
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <nav className="max-w-5xl mx-auto px-4 h-20 flex justify-between items-center text-black">
+          <a href="/" className="group flex items-center gap-2">
+            <h1 className="text-xl font-bold tracking-tight group-hover:text-newblue transition-colors">
+              Apif Supriadi
+            </h1>
+          </a>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
               {MENUS.map((menu) => (
                 <li key={menu.link}>
                   <a
                     href={menu.link}
-                    className="text-md font-medium tracking-wide hover:text-newblue  focus:text-newblue transition duration-300 ease-in-out focus:outline-none"
+                    className="text-sm font-medium hover:text-newblue transition duration-300"
                   >
-                    {lang === "id" ? menu.name : menu.name_en}
+                    {currentLang === "id" ? menu.name : menu.name_en}
                   </a>
                 </li>
               ))}
             </ul>
-          </header>
-          <main>{children}</main>
-          <footer className="flex flex-col gap-4 justify-center items-center h-14 mt-32">
-            <p className="text-center py-4 text-sm text-black">
-              Code with ❤️ by Apif Supriadi from Indonesia
-            </p>
-          </footer>
+
+            <div className="h-6 w-px bg-gray-200"></div>
+
+            <button
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 hover:border-newblue hover:bg-newsky/5 transition duration-300"
+              onClick={() => onSetLang(currentLang === "id" ? "en" : "id")}
+            >
+              <Languages size={16} className="text-gray-600" />
+              <span className="text-xs font-bold uppercase">{currentLang === "id" ? "EN" : "ID"}</span>
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center gap-4">
+            <button
+              className="p-2 rounded-lg border border-gray-200"
+              onClick={() => onSetLang(currentLang === "id" ? "en" : "id")}
+            >
+              <Languages size={20} />
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-gray-600"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile Nav Overlay */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
+            <ul className="flex flex-col p-4 gap-2">
+              {MENUS.map((menu) => (
+                <li key={menu.link}>
+                  <a
+                    href={menu.link}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block p-4 text-base font-medium hover:bg-gray-50 rounded-xl transition duration-200"
+                  >
+                    {currentLang === "id" ? menu.name : menu.name_en}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </header>
+
+      <main className="flex-grow max-w-5xl mx-auto w-full px-0 sm:px-4">
+        {children}
+      </main>
+
+      <footer className="border-t border-gray-50 bg-gray-50/50 mt-32">
+        <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col items-center gap-4">
+          <p className="text-sm font-medium text-gray-500">
+            © {new Date().getFullYear()} Apif Supriadi. All rights reserved.
+          </p>
+          <p className="text-xs text-gray-400 text-center">
+            Built with React, Vite & Tailwind CSS. Hosted on Vercel. Code with Gemini 3
+          </p>
         </div>
-      </div>
-    </>
+      </footer>
+    </div>
   );
 }
 
