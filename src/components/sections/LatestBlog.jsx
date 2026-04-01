@@ -1,7 +1,8 @@
 import React from "react";
 import moment from "moment";
 import "moment/dist/locale/id";
-import { Calendar, Tag } from "lucide-react";
+import { Calendar, Tag, MoveRight, ChevronRight } from "lucide-react";
+import { Link } from "react-router";
 
 const LatestBlog = ({ posts, lang = "en" }) => {
   // Set locale based on current language
@@ -10,48 +11,61 @@ const LatestBlog = ({ posts, lang = "en" }) => {
   return (
     <section
       id="blog"
-      className="w-full h-auto flex flex-col gap-6 sm:gap-8 justify-center my-16 sm:my-32 px-4 sm:px-0 scroll-mt-24"
+      className="w-full h-auto flex flex-col gap-6 sm:gap-8 justify-center my-16 sm:my-20 px-4 sm:px-0 scroll-mt-24"
     >
-      <header>
+      <header className="flex flex-row justify-between items-center bg-transparent border-none p-0 m-0">
         <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 ">
           {lang === "id" ? "Postingan Terbaru" : "Latest post"}
         </h2>
+        <Link
+          to="/blog"
+          className="group flex items-center gap-2 text-newblue font-bold text-sm sm:text-base hover:text-blue-700 transition-colors"
+        >
+          {lang === "id" ? "Lihat Semua" : "View All"}
+          <MoveRight size={18} className="group-hover:translate-x-1 transition-transform" />
+        </Link>
       </header>
 
-      <div className="flex flex-col gap-8">
-        {posts.map((post, index) => (
-          <article key={index}>
-            <a
-              href={`/post/${post.slug}`}
-              className="flex flex-col gap-3 sm:flex-row justify-between items-start sm:gap-4 bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:border-newblue hover:shadow-lg hover:shadow-newblue/5 hover:-translate-y-1 group"
+      <div className="flex flex-col gap-4">
+        {posts.slice(0, 3).map((post, index) => (
+          <article key={index} className="group">
+            <Link
+              to={`/post/${post.slug}`}
+              className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-white border border-slate-100 rounded-3xl p-5 sm:p-6 transition-all duration-500 hover:border-newblue hover:-translate-y-1 relative overflow-hidden"
             >
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg sm:text-xl font-bold text-slate-800 group-hover:text-newblue transition-colors">
-                  {post.title}
-                </h3>
-
-                <footer className="flex flex-row flex-wrap justify-start items-center gap-4 mt-1">
-                  <div className="flex items-center gap-2 text-slate-500">
-                    <Calendar size={14} className="text-slate-400" />
-                    <time
-                      dateTime={post.date}
-                      className="text-xs sm:text-sm font-medium"
-                    >
-                      {moment(post.date).format("MMM YYYY, DD")}
-                    </time>
-                  </div>
-
-                  {post.category_id && (
-                    <div className="flex items-center gap-1.5">
-                      <Tag size={14} className="text-newblue/60" />
-                      <span className="text-xs sm:text-sm font-semibold text-newblue px-2 py-0.5 bg-newsky/10 rounded-md">
-                        {post.category_id}
-                      </span>
+              <div className="flex flex-col flex-grow relative z-10">
+                <header className="mb-2">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-1.5 text-slate-400">
+                      <Calendar size={14} className="text-slate-300" />
+                      <time className="text-[10px] font-bold uppercase tracking-wider">
+                        {moment(post.date).format("MMM DD, YYYY")}
+                      </time>
                     </div>
-                  )}
-                </footer>
+                    <div className="flex flex-wrap gap-1.5">
+                      {post.category && post.category.slice(0, 2).map((tag) => (
+                        <span key={tag} className="text-[9px] font-extrabold text-newblue/70 uppercase tracking-widest bg-newsky/5 px-2 py-0.5 rounded-md">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-newblue transition-colors leading-tight">
+                    {post.title}
+                  </h3>
+                </header>
+
+                <p className="text-slate-500 line-clamp-2 text-sm leading-relaxed">
+                  {post.description || (lang === "id" ? "Klik untuk membaca selengkapnya tentang artikel ini." : "Click to read more about this article.")}
+                </p>
               </div>
-            </a>
+
+              <div className="flex-shrink-0 flex items-center justify-end sm:justify-start">
+                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-newblue group-hover:bg-newblue group-hover:text-white transition-all duration-300">
+                  <ChevronRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </Link>
           </article>
         ))}
       </div>

@@ -24,6 +24,7 @@ function App() {
       return {
         slug,
         title: frontmatter.title || "Judul Tanpa Frontmatter",
+        description: frontmatter.description || "Deskripsi Tidak Diketahui",
         date: frontmatter.pubDate || "Tanggal Tidak Diketahui",
         category: frontmatter.category,
         category_id: frontmatter.category_id,

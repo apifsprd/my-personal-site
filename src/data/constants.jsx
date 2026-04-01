@@ -138,5 +138,32 @@ export const JOB_EXPERIENCE = [
     location: "Tangerang, Indonesia",
     desc: "Membangun 5+ web dengan antarmuka dinamis menggunakan React.js termasuk employee management, job portal dan psikotes online, Merancang dan mengembangkan RESTfulAPI menggunakan NodeJS dan ExpressJS untuk 5+ proyek web, Membantu dukungan teknis IT jika diperlukan",
     desc_en: "Building 5+ web with dynamic interfaces using React.js including employee management, job portal and online psychometric tests, Designing and developing RESTful APIs using NodeJS and ExpressJS for 5+ web projects, Assisting with IT technical support if needed",
+  },
+  {
+    title: "Junior Web Developer",
+    company: "PT. Passion Abadi Korpora",
+    company_logo: 'https://cdn.pintarnya.com/images/employer/logo_pak_fa_2019_black_1716267603.png',
+    period: "Nov 2021 - Mar 2022",
+    period_en: "Nov 2021 - Mar 2022",
+    location: "Kota Tangerang, Indonesia",
+    desc: "Memperbaiki 5+ error dan bug pada aplikasi web berbasis PHP dengan CodeIgniter3, Menambahkan 3+ fitur baru pada aplikasi web berbasis PHP dengan CodeIgniter3",
+    desc_en: "Fixing 5+ errors and bugs on PHP-based web applications with CodeIgniter3, Adding 3+ new features to PHP-based web applications with CodeIgniter3",
+  }
+]
+
+export const STUDY_EXPERIENCE = [
+  {
+    title: "Frontend Development Bootcamp",
+    university: "Dibimbing.id",
+    period: "Sep 2025 - Mar 2026",
+    location: "Online",
+    gpa: ""
+  },
+  {
+    title: "Teknik Informatika",
+    university: "STMIK Antar Bangsa",
+    period: "Sep 2016 - Nov 2020",
+    location: "Kota Tangerang, Indonesia",
+    gpa: "3.82"
   }
 ]
