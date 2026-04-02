@@ -125,7 +125,7 @@ export const JOB_EXPERIENCE = [
     company_logo: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Logo-uiii.png",
     period: "Jun 2024 - Sekarang",
     period_en: "Jun 2024 - Present",
-    location: "Depok, Indonesia",
+    location: "Kota Depok, Indonesia",
     desc: "Mengembangkan 1 multi-role app dan cross-platform dengan menggunakan React Native dengan Expo framework, Mengembangkan 1 web berbasis reactjs, Design UIUX dengan Figma, Berkolaborasi dengan tim Backend untuk integrasi API dan fungsionalitas sistem",
     desc_en: "Developing 1 multi-role app and cross-platform using React Native with Expo framework, Developing 1 web based on reactjs, Design UIUX with Figma, Collaborating with Backend team for API integration and system functionality",
   },
@@ -136,7 +136,7 @@ export const JOB_EXPERIENCE = [
     period: "Feb 2023 - Jun 2024",
     period_en: "Feb 2023 - Jun 2024",
     location: "Tangerang, Indonesia",
-    desc: "Membangun 5+ web dengan antarmuka dinamis menggunakan React.js termasuk employee management, job portal dan psikotes online, Merancang dan mengembangkan RESTfulAPI menggunakan NodeJS dan ExpressJS untuk 5+ proyek web, Membantu dukungan teknis IT jika diperlukan",
+    desc: "Membangun 5+ web dengan antarmuka dinamis menggunakan React.js, Merancang dan mengembangkan RESTfulAPI menggunakan NodeJS dan ExpressJS untuk 5+ proyek web, Membantu dukungan teknis IT jika diperlukan",
     desc_en: "Building 5+ web with dynamic interfaces using React.js including employee management, job portal and online psychometric tests, Designing and developing RESTful APIs using NodeJS and ExpressJS for 5+ web projects, Assisting with IT technical support if needed",
   },
   {

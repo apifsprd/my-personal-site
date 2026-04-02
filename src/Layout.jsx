@@ -47,7 +47,7 @@ function Layout({ lang = "en", onSetLang, children }) {
               onClick={() => onSetLang(currentLang === "id" ? "en" : "id")}
             >
               <Languages size={16} className="text-gray-600" />
-              <span className="text-xs font-bold uppercase">{currentLang === "id" ? "EN" : "ID"}</span>
+              <span className="text-xs font-bold uppercase">{currentLang === "id" ? "ID" : "EN"}</span>
             </button>
           </div>
 
