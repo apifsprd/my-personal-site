@@ -77,7 +77,7 @@ const Hero = ({ lang = "en" }) => {
           <motion.div variants={itemVariants} className="flex flex-col max-w-2xl lg:max-w-3xl">
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-slate-700 font-medium">
               I'm a Web Developer turned{" "}
-              <span className="text-newblue font-bold">Mobile App Developer</span>.
+              <span className="text-newblue font-bold">Mobile App Developer</span> with 2+ year experience.
               I enjoy working in the JavaScript ecosystem, exploring new technologies,
               and learning new things. Beside that, I'm a <span>&#9917;</span>{" "}
               football fan.
@@ -87,7 +87,7 @@ const Hero = ({ lang = "en" }) => {
           <motion.div variants={itemVariants} className="flex flex-col max-w-2xl lg:max-w-3xl">
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-slate-700 font-medium">
               Saya adalah seorang Web Developer yang beralih menjadi{" "}
-              <span className="text-newblue font-bold">Mobile App Developer</span>.
+              <span className="text-newblue font-bold">Mobile App Developer</span> dengan pengalaman 2+ tahun.
               Saya menikmati bekerja di ekosistem JavaScript, mengeksplorasi teknologi baru,
               dan mempelajari hal baru. Selain itu, saya adalah penggemar sepak bola <span>&#9917;</span>.
             </p>
