@@ -58,11 +58,10 @@ const Experience = ({ lang = "en" }) => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`group border rounded-2xl transition-all duration-500 overflow-hidden ${
-                  isOpen
+                className={`group border rounded-2xl transition-all duration-500 overflow-hidden ${isOpen
                     ? "border-newblue bg-slate-50/50"
                     : "border-slate-100 hover:border-slate-200 bg-white"
-                }`}
+                  }`}
               >
                 {/* Header / Trigger */}
                 <button
@@ -72,9 +71,8 @@ const Experience = ({ lang = "en" }) => {
                   {/* Company Logo Wrapper */}
                   <motion.div
                     animate={isOpen ? { borderColor: "rgba(14, 165, 233, 0.3)", scale: 1.1 } : {}}
-                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border p-2 flex-shrink-0 transition-all duration-500 ${
-                      isOpen ? "border-newblue/30" : "border-slate-100 group-hover:scale-105"
-                    }`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border p-2 flex-shrink-0 transition-all duration-500 ${isOpen ? "border-newblue/30" : "border-slate-100 group-hover:scale-105"
+                      }`}
                   >
                     <img
                       src={job.company_logo}
@@ -98,11 +96,10 @@ const Experience = ({ lang = "en" }) => {
                         </span>
                         <motion.span
                           animate={isOpen ? { backgroundColor: "#0ea5e9", color: "#fff" } : {}}
-                          className={`text-[10px] font-bold px-2 py-1 rounded-md border transition-colors ${
-                            isOpen
+                          className={`text-[10px] font-bold px-2 py-1 rounded-md border transition-colors ${isOpen
                               ? "border-newblue"
                               : "bg-slate-50 text-slate-500 border-slate-100"
-                          }`}
+                            }`}
                         >
                           {lang === "id" ? job.period : job.period_en}
                         </motion.span>
@@ -119,9 +116,8 @@ const Experience = ({ lang = "en" }) => {
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: "spring", stiffness: 200 }}
-                    className={`mt-2 sm:mt-0 p-2.5 rounded-xl transition-all duration-300 ${
-                      isOpen ? "bg-newblue text-white " : "bg-slate-50 text-slate-400"
-                    }`}
+                    className={`mt-2 sm:mt-0 p-2.5 rounded-xl transition-all duration-300 ${isOpen ? "bg-newblue text-white " : "bg-slate-50 text-slate-400"
+                      }`}
                   >
                     <ChevronDown size={22} />
                   </motion.div>
@@ -175,11 +171,10 @@ const Experience = ({ lang = "en" }) => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`group border rounded-2xl transition-all duration-500 overflow-hidden ${
-                  isOpen
+                className={`group border rounded-2xl transition-all duration-500 overflow-hidden ${isOpen
                     ? "border-newblue bg-slate-50/50"
                     : "border-slate-100 hover:border-slate-200 bg-white"
-                }`}
+                  }`}
               >
                 {/* Header / Trigger */}
                 <button
@@ -189,9 +184,8 @@ const Experience = ({ lang = "en" }) => {
                   {/* Icon Wrapper */}
                   <motion.div
                     animate={isOpen ? { borderColor: "rgba(14, 165, 233, 0.3)", scale: 1.1 } : {}}
-                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border p-2 flex items-center justify-center flex-shrink-0 transition-all duration-500 ${
-                      isOpen ? "border-newblue/30" : "border-slate-100 group-hover:scale-105"
-                    }`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white border p-2 flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isOpen ? "border-newblue/30" : "border-slate-100 group-hover:scale-105"
+                      }`}
                   >
                     <GraduationCap size={24} className="text-newblue" />
                   </motion.div>
@@ -208,11 +202,10 @@ const Experience = ({ lang = "en" }) => {
                         </span>
                         <motion.span
                           animate={isOpen ? { backgroundColor: "#0ea5e9", color: "#fff" } : {}}
-                          className={`text-[10px] font-bold px-2 py-1 rounded-md border transition-colors ${
-                            isOpen
+                          className={`text-[10px] font-bold px-2 py-1 rounded-md border transition-colors ${isOpen
                               ? "border-newblue"
                               : "bg-slate-50 text-slate-500 border-slate-100"
-                          }`}
+                            }`}
                         >
                           {study.period}
                         </motion.span>
@@ -228,9 +221,8 @@ const Experience = ({ lang = "en" }) => {
                   {/* Toggle Icon */}
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    className={`mt-2 sm:mt-0 p-2.5 rounded-xl transition-all duration-300 ${
-                      isOpen ? "bg-newblue text-white " : "bg-slate-50 text-slate-400"
-                    }`}
+                    className={`mt-2 sm:mt-0 p-2.5 rounded-xl transition-all duration-300 ${isOpen ? "bg-newblue text-white " : "bg-slate-50 text-slate-400"
+                      }`}
                   >
                     <ChevronDown size={22} />
                   </motion.div>
@@ -269,8 +261,8 @@ const Experience = ({ lang = "en" }) => {
                             <div className="w-1 h-1 rounded-full bg-newblue flex-shrink-0" />
                             <span className="text-xs sm:text-sm">
                               {lang === "id"
-                                ? `Menyelesaikan program studi ${study.title} di ${study.university}`
-                                : `Completed ${study.title} program at ${study.university}`}
+                                ? study.desc
+                                : study.desc_en}
                             </span>
                           </motion.div>
                         </div>

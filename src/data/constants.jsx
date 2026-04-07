@@ -155,15 +155,19 @@ export const STUDY_EXPERIENCE = [
   {
     title: "Frontend Development Bootcamp",
     university: "Dibimbing.id",
-    period: "Sep 2025 - Mar 2026",
+    period: "Sep 2025 - Apr 2026",
     location: "Online",
-    gpa: ""
+    gpa: "A (93.08)",
+    desc: "Hasil studi bisa dilihat di https://dibimbing.id/certificate-validation?cn=201029FE25040401",
+    desc_en: "Study results can be seen at https://dibimbing.id/certificate-validation?cn=201029FE25040401"
   },
   {
     title: "Teknik Informatika",
     university: "STMIK Antar Bangsa",
     period: "Sep 2016 - Nov 2020",
     location: "Kota Tangerang, Indonesia",
-    gpa: "3.82"
+    gpa: "3.82",
+    desc: "Menyelesaikan studi dengan IPK 3.82",
+    desc_en: "Completed studies with GPA 3.82"
   }
 ]

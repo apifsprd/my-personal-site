@@ -92,13 +92,13 @@ function Layout({ lang = "en", onSetLang, children }) {
         {children}
       </main>
 
-      <footer className="border-t border-gray-50 bg-gray-50/50 mt-32">
+      <footer className="border-t border-gray-50 bg-gray-100 mt-32">
         <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col items-center gap-4">
           <p className="text-sm font-medium text-gray-500">
             © {new Date().getFullYear()} Apif Supriadi. All rights reserved.
           </p>
           <p className="text-xs text-gray-400 text-center">
-            Built with React, Vite & Tailwind CSS. Hosted on Vercel. Code with Gemini 3
+            Built with React, Vite & Tailwind CSS. Hosted on Vercel. Code with Gemini
           </p>
         </div>
       </footer>
