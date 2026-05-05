@@ -1,12 +1,23 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router";
-import { Calendar, Tag, Search, SortAsc, SortDesc, MoveLeft, Clock, ChevronRight } from "lucide-react";
+import {
+  Calendar,
+  Tag,
+  Search,
+  SortAsc,
+  SortDesc,
+  MoveLeft,
+  Clock,
+  ChevronRight,
+} from "lucide-react";
 import moment from "moment";
 import "moment/locale/id";
 import Layout from "../Layout";
 
 const modules = import.meta.glob("../content/post/*.mdx", { eager: true });
-const modules_en = import.meta.glob("../content/post_en/*.mdx", { eager: true });
+const modules_en = import.meta.glob("../content/post_en/*.mdx", {
+  eager: true,
+});
 
 const BlogList = () => {
   const [lang, setLang] = useState(localStorage.getItem("lang") || "en");
@@ -17,22 +28,26 @@ const BlogList = () => {
 
   useEffect(() => {
     const selectedModules = lang === "id" ? modules : modules_en;
-    const pathPrefix = lang === "id" ? "../content/post/" : "../content/post_en/";
+    const pathPrefix =
+      lang === "id" ? "../content/post/" : "../content/post_en/";
 
-    const loadedPosts = Object.entries(selectedModules).map(([path, module]) => {
-      const frontmatter = module.frontmatter || {};
-      const slug = path.replace(pathPrefix, "").replace(".mdx", "");
+    const loadedPosts = Object.entries(selectedModules).map(
+      ([path, module]) => {
+        const frontmatter = module.frontmatter || {};
+        const slug = path.replace(pathPrefix, "").replace(".mdx", "");
 
-      return {
-        slug,
-        title: frontmatter.title || "Untitled",
-        date: frontmatter.pubDate || "",
-        tags: frontmatter.category || [],
-        description: frontmatter.description || "",
-        image: frontmatter.image,
-      };
-    });
+        return {
+          slug,
+          title: frontmatter.title || "Untitled",
+          date: frontmatter.pubDate || "",
+          tags: frontmatter.category || [],
+          description: frontmatter.description || "",
+          image: frontmatter.image,
+        };
+      },
+    );
 
+    scrollTo(0, 0);
     setPosts(loadedPosts);
     localStorage.setItem("lang", lang);
   }, [lang]);
@@ -52,8 +67,11 @@ const BlogList = () => {
   const filteredPosts = useMemo(() => {
     return posts
       .filter((post) => {
-        const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesTag = selectedTag === "All" || post.tags.includes(selectedTag);
+        const matchesSearch = post.title
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+        const matchesTag =
+          selectedTag === "All" || post.tags.includes(selectedTag);
         return matchesSearch && matchesTag;
       })
       .sort((a, b) => {
@@ -79,10 +97,15 @@ const BlogList = () => {
         <div className="flex flex-col md:flex-row gap-6 mb-4 items-start md:items-center">
           {/* Search Input */}
           <div className="relative flex-grow w-full md:max-w-md group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-newblue transition-colors" size={20} />
+            <Search
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-newblue transition-colors"
+              size={20}
+            />
             <input
               type="text"
-              placeholder={isID ? "Cari judul artikel..." : "Search articles by title..."}
+              placeholder={
+                isID ? "Cari judul artikel..." : "Search articles by title..."
+              }
               className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-newblue/20 focus:border-newblue transition-all  group-hover:border-slate-300"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -91,20 +114,28 @@ const BlogList = () => {
 
           {/* Sort Select */}
           <div className="flex items-center gap-3 w-full md:w-auto">
-            <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">{isID ? "Urutkan:" : "Sort:"}</span>
+            <span className="text-sm font-bold text-slate-400 uppercase tracking-wider">
+              {isID ? "Urutkan:" : "Sort:"}
+            </span>
             <div className="flex bg-slate-100 p-1 rounded-xl">
               <button
                 onClick={() => setSortBy("newest")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${sortBy === "newest" ? "bg-white text-newblue " : "text-slate-500 hover:text-slate-700"
-                  }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+                  sortBy === "newest"
+                    ? "bg-white text-newblue "
+                    : "text-slate-500 hover:text-slate-700"
+                }`}
               >
                 <SortDesc size={16} />
                 {isID ? "Terbaru" : "Newest"}
               </button>
               <button
                 onClick={() => setSortBy("oldest")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${sortBy === "oldest" ? "bg-white text-newblue " : "text-slate-500 hover:text-slate-700"
-                  }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+                  sortBy === "oldest"
+                    ? "bg-white text-newblue "
+                    : "text-slate-500 hover:text-slate-700"
+                }`}
               >
                 <SortAsc size={16} />
                 {isID ? "Terlama" : "Oldest"}
@@ -120,10 +151,11 @@ const BlogList = () => {
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`px-5 py-2.5 rounded-2xl text-sm font-bold transition-all border ${selectedTag === tag
-                  ? "bg-newblue text-white border-newblue shadow-lg shadow-newblue/20"
-                  : "bg-white text-slate-500 border-slate-200 hover:border-newblue hover:text-newblue"
-                  }`}
+                className={`px-5 py-2.5 rounded-2xl text-sm font-bold transition-all border ${
+                  selectedTag === tag
+                    ? "bg-newblue text-white border-newblue shadow-lg shadow-newblue/20"
+                    : "bg-white text-slate-500 border-slate-200 hover:border-newblue hover:text-newblue"
+                }`}
               >
                 {tag === "All" ? (isID ? "Semua Tag" : "All Tags") : `#${tag}`}
               </button>
@@ -151,7 +183,10 @@ const BlogList = () => {
                         </div>
                         <div className="flex flex-wrap gap-1.5">
                           {post.tags.slice(0, 2).map((tag) => (
-                            <span key={tag} className="text-[9px] font-extrabold text-newblue/70 uppercase tracking-widest bg-newsky/5 px-2 py-0.5 rounded-md">
+                            <span
+                              key={tag}
+                              className="text-[9px] font-extrabold text-newblue/70 uppercase tracking-widest bg-newsky/5 px-2 py-0.5 rounded-md"
+                            >
                               {tag}
                             </span>
                           ))}
@@ -169,7 +204,10 @@ const BlogList = () => {
 
                   <div className="flex-shrink-0 flex items-center justify-end sm:justify-start">
                     <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-newblue group-hover:bg-newblue group-hover:text-white transition-all duration-300">
-                      <ChevronRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
+                      <ChevronRight
+                        size={20}
+                        className="group-hover:translate-x-0.5 transition-transform"
+                      />
                     </div>
                   </div>
                 </Link>

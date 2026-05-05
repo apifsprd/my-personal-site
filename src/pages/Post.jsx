@@ -24,8 +24,10 @@ export default function Post() {
       setLoading(true);
       setError(null);
 
-      const pathPrefix = lang === "id" ? "../content/post/" : "../content/post_en/";
-      const otherPrefix = lang === "id" ? "../content/post_en/" : "../content/post/";
+      const pathPrefix =
+        lang === "id" ? "../content/post/" : "../content/post_en/";
+      const otherPrefix =
+        lang === "id" ? "../content/post_en/" : "../content/post/";
       const targetPath = `${pathPrefix}${slug}.mdx`;
       const selectedModules = lang === "id" ? modules : modules_en;
       const otherModules = lang === "id" ? modules_en : modules;
@@ -52,7 +54,9 @@ export default function Post() {
               for (const path in selectedModules) {
                 const m = await selectedModules[path]();
                 if (m.frontmatter?.translationId === otherFM.translationId) {
-                  foundTranslatedSlug = path.replace(pathPrefix, "").replace(".mdx", "");
+                  foundTranslatedSlug = path
+                    .replace(pathPrefix, "")
+                    .replace(".mdx", "");
                   break;
                 }
               }
@@ -87,6 +91,7 @@ export default function Post() {
       }
     };
 
+    scrollTo(0, 0);
     loadPost();
     localStorage.setItem("lang", lang);
   }, [slug, lang, navigate]);
@@ -115,7 +120,7 @@ export default function Post() {
           <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center text-red-500 mb-2">
             <AlertCircle size={40} />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 text-center">
+          <h1 className="text-2xl font-bold text-black text-center">
             {lang === "id" ? "Artikel Tidak Ditemukan" : "Post Not Found"}
           </h1>
           <p className="text-slate-500 text-base text-center max-w-md">
@@ -140,21 +145,38 @@ export default function Post() {
 
   const components = {
     h2: (props) => (
-      <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6 font-display" {...props} />
+      <h2
+        className="text-2xl font-bold text-black mt-12 mb-6 font-display"
+        {...props}
+      />
     ),
     h3: (props) => (
-      <h3 className="text-xl font-bold text-slate-800 mt-8 mb-4 font-display" {...props} />
+      <h3
+        className="text-xl font-bold text-black mt-8 mb-4 font-display"
+        {...props}
+      />
     ),
     p: (props) => (
-      <p className="text-lg leading-relaxed text-slate-600 mb-6 font-sans" {...props} />
+      <p
+        className="text-lg leading-relaxed text-black mb-6 font-sans"
+        {...props}
+      />
     ),
-    ul: (props) => <ul className="list-disc list-inside mb-8 space-y-3 ml-4" {...props} />,
-    li: (props) => <li className="text-slate-600 text-lg" {...props} />,
+    ul: (props) => (
+      <ul className="list-disc list-inside mb-8 space-y-3 ml-4" {...props} />
+    ),
+    li: (props) => <li className="text-black text-lg" {...props} />,
     code: (props) => (
-      <code className="bg-slate-50 text-newblue rounded-lg px-2 py-1 font-mono text-sm border border-slate-100" {...props} />
+      <code
+        className="bg-slate-50 text-newblue rounded-lg px-2 py-1 font-mono text-sm border border-slate-100"
+        {...props}
+      />
     ),
     blockquote: (props) => (
-      <blockquote className="border-l-4 border-newblue/20 bg-newsky/5 p-6 italic text-slate-700 rounded-r-2xl mb-8" {...props} />
+      <blockquote
+        className="border-l-4 border-newblue/20 bg-newsky/5 p-6 italic text-slate-700 rounded-r-2xl mb-8"
+        {...props}
+      />
     ),
   };
 
@@ -167,12 +189,15 @@ export default function Post() {
               to="/"
               className="inline-flex items-center gap-2 text-slate-400 hover:text-newblue transition-colors text-sm font-bold group"
             >
-              <MoveLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+              <MoveLeft
+                size={18}
+                className="group-hover:-translate-x-1 transition-transform"
+              />
               {isID ? "Kembali ke Beranda" : "Back to Home"}
             </Link>
           </nav>
 
-          <h1 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 mb-8 leading-tight tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-display font-extrabold text-black mb-8 leading-tight tracking-tight">
             {frontmatter.title || "Untitled Post"}
           </h1>
 
@@ -181,7 +206,9 @@ export default function Post() {
               <div className="w-10 h-10 rounded-full bg-newsky/20 flex items-center justify-center text-newblue border border-newsky/30">
                 <User size={18} />
               </div>
-              <span className="text-sm font-bold text-slate-700">Apif Supriadi</span>
+              <span className="text-sm font-bold text-slate-700">
+                Apif Supriadi
+              </span>
             </div>
 
             {frontmatter.pubDate && (
@@ -189,7 +216,10 @@ export default function Post() {
                 <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 border border-slate-100">
                   <Calendar size={18} />
                 </div>
-                <time dateTime={frontmatter.pubDate} className="text-sm font-bold text-slate-600">
+                <time
+                  dateTime={frontmatter.pubDate}
+                  className="text-sm font-bold text-slate-600"
+                >
                   {moment(frontmatter.pubDate).format("LL")}
                 </time>
               </div>
@@ -234,15 +264,25 @@ export default function Post() {
           )}
         </header>
 
-        <section className="prose prose-lg max-w-none mb-20 prose-headings:text-slate-900 prose-headings:font-display prose-p:text-slate-600 prose-p:leading-relaxed prose-a:text-newblue hover:prose-a:text-blue-700 prose-strong:text-slate-900 prose-img:rounded-3xl prose-code:text-newblue prose-code:bg-slate-50 prose-code:px-2 prose-code:py-0.5 prose-code:rounded-md">
+        <section className="prose prose-lg max-w-none mb-20 prose-headings:text-black prose-headings:font-display prose-p:text-black prose-p:leading-relaxed prose-a:text-newblue hover:prose-a:text-blue-700 prose-strong:text-black prose-img:rounded-3xl prose-code:text-newblue prose-code:bg-slate-50 prose-code:px-2 prose-code:py-0.5 prose-code:rounded-md">
           <MDXProvider components={components}>
             <Component />
           </MDXProvider>
         </section>
 
+        <section className="w-full h-auto p-4 rounded-lg bg-sky-100 border border-sky-400 gap-2 flex flex-col items-start">
+          <p className="text-base font-bold text-black">Disclaimer :</p>
+          <p className="text-base font-medium text-black leading-relaxed">
+            I'am not a good Writer but I'm trying to write a good article with
+            little help from AI, While AI assists in the creative process, every
+            idea, reflection and perspective shared here remains genuinely my
+            own.
+          </p>
+        </section>
+
         {allPosts.length > 0 && (
           <section className="border-t border-slate-100 pt-16 mb-16">
-            <h2 className="text-2xl font-bold text-slate-900 mb-10 font-display flex items-center gap-3">
+            <h2 className="text-2xl font-bold text-black mb-10 font-display flex items-center gap-3">
               <span className="w-8 h-2 bg-newblue rounded-full"></span>
               {isID ? "Baca juga Artikel Lainnya" : "Read Other Articles"}
             </h2>
@@ -276,8 +316,13 @@ export default function Post() {
             to="/"
             className="group inline-flex items-center gap-3 px-12 py-4 bg-slate-900 text-white rounded-[1.5rem] hover:bg-slate-800 transition-all duration-300 shadow-2xl shadow-slate-200 hover:shadow-slate-300"
           >
-            <MoveLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="font-bold">{isID ? "Kembali ke Beranda" : "Back to Home"}</span>
+            <MoveLeft
+              size={20}
+              className="group-hover:-translate-x-1 transition-transform"
+            />
+            <span className="font-bold">
+              {isID ? "Kembali ke Beranda" : "Back to Home"}
+            </span>
           </Link>
         </footer>
       </article>

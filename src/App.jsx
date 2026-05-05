@@ -17,26 +17,28 @@ function App() {
     const selectedModules = lang === "id" ? modules : modules_en;
     const pathPrefix = lang === "id" ? "./content/post/" : "./content/post_en/";
 
-    const loadedPosts = Object.entries(selectedModules).map(([path, module]) => {
-      const frontmatter = module.frontmatter || {};
-      const slug = path.replace(pathPrefix, "").replace(".mdx", "");
+    const loadedPosts = Object.entries(selectedModules).map(
+      ([path, module]) => {
+        const frontmatter = module.frontmatter || {};
+        const slug = path.replace(pathPrefix, "").replace(".mdx", "");
 
-      return {
-        slug,
-        title: frontmatter.title || "Judul Tanpa Frontmatter",
-        description: frontmatter.description || "Deskripsi Tidak Diketahui",
-        date: frontmatter.pubDate || "Tanggal Tidak Diketahui",
-        category: frontmatter.category,
-        category_id: frontmatter.category_id,
-        image: frontmatter.image,
-        Component: module.default,
-      };
-    });
+        return {
+          slug,
+          title: frontmatter.title || "Judul Tanpa Frontmatter",
+          description: frontmatter.description || "Deskripsi Tidak Diketahui",
+          date: frontmatter.pubDate || "Tanggal Tidak Diketahui",
+          category: frontmatter.category,
+          category_id: frontmatter.category_id,
+          image: frontmatter.image,
+          Component: module.default,
+        };
+      },
+    );
 
     const sorted = loadedPosts.sort(
       (a, b) => new Date(b.date) - new Date(a.date),
     );
-
+    scrollTo(0, 0);
     localStorage.setItem("lang", lang);
     setPosts(sorted);
   }, [lang]);
